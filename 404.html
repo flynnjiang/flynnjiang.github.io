@@ -1,28 +1,9 @@
 ---
 layout: page
-title: 诶？！
-desc: 好像有些奇怪的东西不见了？
+title: 出错了！
+desc: 没有找到相关的内容。
 ---
 
 <div class="not_found">
-
-
-	<p><img id="not_found_img" src="" alt="File not found!" /></p>
-
-	<p>算了不管啦，<a href="/">我还是再看看其他的吧！</a></p>
-
+	<p>没有找到相关的内容，<a href="/">要不要再看看其他的？</a></p>
 </div>
-
-<script type="text/javascript">
-var images = new Array(
-		"/images/file_not_found.jpg",
-		"/images/file_not_found_2.jpg",
-		"/images/file_not_found_3.gif",
-		"/images/file_not_found_4.jpg"
-);
-var now = new Date();
-var index = now.getSeconds() % images.length;
-$("#not_found_img").attr("src", images[index]);
-delete images, now;
-
-</script>

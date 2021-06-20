@@ -4,7 +4,7 @@ layout: default
 <!-- Simple Nav -->
 <div class="post_nav">
 	<a href="/">首页</a>
-	<span class="post_nav_sep">>></span>
+	<span class="post_nav_sep">/</span>
 	
 	{% if page.category == 'notes' %}
 	<a href="/notes.html">烂笔头</a>
@@ -28,16 +28,6 @@ layout: default
 
 
 <hr />
-
-
-<!-- Donation -->
-<div id="donation">
-
-	<blockquote>“哎哟~ 这篇东西还不错哦，打赏一下博主吧，不怕他骄傲！”</blockquote>
-
-	<p><img title="扫一扫，打赏任意金额。" src="/images/pay_qr_code.png" /></p>
-
-</div>
 
 
 {% if page.category == 'notes' %}
@@ -76,32 +66,8 @@ layout: default
 
 <!-- Post Comments -->
 <div id="post_commets">
-
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="{{ page.id }}" data-title="{{ page.title }}" data-url="{{ page.url }}"></div>
-	<!-- 多说评论框 end -->
-
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"jiangfeng-org"};
-		(function() {
-				var ds = document.createElement('script');
-				ds.type = 'text/javascript';ds.async = true;
-				ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-				ds.charset = 'UTF-8';
-				(document.getElementsByTagName('head')[0]
-				 || document.getElementsByTagName('body')[0]).appendChild(ds);
-		})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-
 	<div class="clear"></div>
-
 </div>
-
-
-
-
 
 
 

@@ -4,7 +4,9 @@ title: 在Ubuntu上手动修改/etc/resolv.conf文件
 category: notes
 ---
 
-在Ubuntu上，`/etc/resolv.conf`由多个管理程序同时在管理，想要手动编辑这个文件的
+# 修改步骤
+
+在Ubuntu上，/etc/resolv.conf由多个管理程序同时在管理，想要手动编辑这个文件的
 话，需要先禁用掉相关的管理策略。步骤如下：
 
 ## 禁用systemd-resolved的管理
@@ -12,7 +14,7 @@ category: notes
 systemd-resolved变不会再去修改这个文件。
 
 ## 禁用NetworkManager的管理
-修改`/etc/NetworkManager/NetowrkManager.conf`文件，在`main`章节下，添加
+修改/etc/NetworkManager/NetowrkManager.conf文件，在`main`章节下，添加
 `dns=none`的配置项，类似这样子：
 
 ```
@@ -32,4 +34,4 @@ wifi.scan-rand-mac-address=no
 
 
 # 参考资料
-[NetworkManager.conf]:https://developer.gnome.org/NetworkManager/stable/NetworkManager.conf.html
+[NetworkManager.conf](https://developer.gnome.org/NetworkManager/stable/NetworkManager.conf.html)

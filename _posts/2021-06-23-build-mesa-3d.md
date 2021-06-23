@@ -9,6 +9,24 @@ category: notes
 我是在Ubuntu 20.04上编译mesa 20.2.6版本报错的，报错原因就是缺少某些依赖，
 安装完相关依赖就可以了。
 
+## 方法1
+
+这是在这篇[博文][https://www.collabora.com/news-and-blog/blog/2018/02/12/virtualizing-gpu-access/]
+里发现的方法，其利用了Ubuntu源码仓库上mesa包已有的编译依赖关系，一键安装所有依赖。
+
+```
+sudo sed -i 's/\#deb-src/deb-src/' /etc/apt/sources.list
+sudo apt update
+sudo apt-get build-dep mesa
+```
+
+第一二条命令是为了开启source.list里面的deb-src源码仓库，如果执行完后没成功
+反注释掉相关行，估计是那个#和deb-src之间有空格了，自己调整一下命令就行。
+
+## 方法2
+
+这是我费蛮力手动找出来的依赖包，汇总了一下，装完应该也可以编译：
+
 ```shell
 sudo apt-get install libdrm-dev llvm libwayland-dev wayland-protocols \
 libwayland-egl-backend-dev libx11-dev libxext-dev libxdamage-dev \

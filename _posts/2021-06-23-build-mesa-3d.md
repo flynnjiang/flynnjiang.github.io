@@ -11,7 +11,7 @@ category: notes
 
 ## 方法1
 
-这是在这篇[博文][https://www.collabora.com/news-and-blog/blog/2018/02/12/virtualizing-gpu-access/]
+这是在这篇[博文](https://www.collabora.com/news-and-blog/blog/2018/02/12/virtualizing-gpu-access/)
 里发现的方法，其利用了Ubuntu源码仓库上mesa包已有的编译依赖关系，一键安装所有依赖。
 
 ```

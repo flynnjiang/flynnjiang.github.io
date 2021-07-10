@@ -1,4 +1,4 @@
-﻿/* Elements */
+/* Elements */
 body, div, p, table, th, td, ul, ol, li, h1, h2, h3, h4, h5, h6,
 blockquote,img,form,header,footer,section,dl,dt,dd,a,span,i {margin:0; padding:0; border:0;}
 
@@ -27,18 +27,18 @@ blockquote, q {font-style:italic;}
 
 
 code {
-	font-family: Courier New, "微软雅黑"; 
-	border: solid 1px #ccc;
-	background-color: #eee;
-	margin: 0 0.2em;
-	padding: 0 0.5em;
+	font-family: "DejaVu Sans Mono", "Courier New", "微软雅黑"; 
+  font-size: 14px;
+  background-color: rgb(246,237,206);
+	padding: 0 0.2em;
 }
 
 pre code {
 	display: block;
+  border: solid 1px #ccc;
 	margin: 1em 0;
 	padding: 1em;
-	line-height: 1.3em;
+	line-height: 1.5em;
 }
 
 .clear {clear: both;}

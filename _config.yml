@@ -1,0 +1,4 @@
+markdown: kramdown
+
+custom:
+  highlight-style: github

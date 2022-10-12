@@ -1,0 +1,30 @@
+---
+layout: page
+title: 东西
+desc: 这里有我喜欢的一些项目。 
+---
+<dl class="projects_list">
+	<div class="project" >
+	</div>
+</dl>
+
+<script type="text/javascript">
+$(".projects_list").hide();
+
+function github_cb(rsp){
+	rsp.data.sort(function(a, b){
+		return Date.parse(a.pushed_at) - Date.parse(b.pushed_at);
+	});
+	
+	$.each(rsp.data, function(){
+		$(".projects_list").prepend(
+				'<div class="project"><dt><a href="'+ this.html_url + '" target="_blank">' + this.name + '</a></dt>'
+				+ '<dd>' + this.description + '</dd></div>');
+	});
+	
+	$(".projects_list").slideDown(1500);
+}
+</script>
+<script type="text/javascript" src="https://api.github.com/users/flynnjiang/repos?callback=github_cb"></script>
+
+<div class="clear"></div>

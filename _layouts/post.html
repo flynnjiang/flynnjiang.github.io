@@ -1,0 +1,80 @@
+---
+layout: default
+---
+<!-- Simple Nav -->
+<div class="post_nav">
+	<a href="/">首页</a>
+	<span class="post_nav_sep">　/　</span>
+	
+	{% if page.category == 'notes' %}
+	<a href="/notes.html">笔记</a>
+	{% else %}
+	<a href="/humor.html">心情</a>
+	{% endif %}
+</div>
+
+<!-- Post -->
+<article class="post">
+
+	<div class="post_title">{{page.title}}</div>
+
+	<div class="post_meta">{{page.date | date:"%Y-%m-%d"}}</div>
+
+	<div class="post_content">
+
+
+
+{{content}}
+
+
+
+	</div>
+
+</article>    
+
+
+<hr />
+
+
+{% if page.category == 'notes' %}
+
+<!-- Related Posts -->
+<div class="post_related">
+
+	<div class="post_related_title">相关笔记</div>
+	
+	<ul class="post_related_list">
+		{% for post in site.related_posts limit:3 %}
+		<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+		{% endfor %}
+	</ul>
+
+</div>
+
+{% else %}
+
+<!-- Recent Posts -->
+<div class="post_recent">
+
+	<div class="post_recent_title">最近心情</div>
+
+	<ul class="post_recent_list">
+		{% for post in site.related_posts limit:3 %}
+		<li><a href="{{ post.url }}">{{ post.title }}</a></li>
+		{% endfor %}
+	</ul>
+
+</div>
+
+{% endif %}
+
+
+
+<!-- Post Comments -->
+<div id="post_commets">
+	<div class="clear"></div>
+</div>
+
+
+
+

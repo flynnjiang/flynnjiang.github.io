@@ -1,0 +1,48 @@
+
+/* Home Page's Introduction */
+#home_intro {
+	font-size:32px;
+	letter-spacing: 3px;
+	padding: 2em 4em 1em 4em;
+	text-align: center;
+}
+
+
+/* Home Page's Main Navigation */
+#home_nav {
+	margin-top: 100px;
+}
+
+.home_nav_item {
+	position: relative;
+	display: inline-block;
+	width:186px;
+	height: 139px;
+	margin: 0 10px;
+
+}
+.home_nav_item i {
+	margin: 10px auto 0 auto;
+}
+.home_nav_item span {
+	display: block;
+	width: 180px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #afa9a2;
+	
+	border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border: 0px none #000000;
+	text-decoration: none;
+	color: white;
+	font-size: 18px;
+	letter-spacing: 8px;
+
+	
+	position: absolute;
+	bottom: 0;
+}
+.home_nav_item:hover span {background-color: #c1bcb6;}

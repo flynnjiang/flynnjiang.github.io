@@ -80,22 +80,22 @@ header {overflow: hidden;}
 
 #hdr_nav  {
 	left: 50%;
-    top: 0;
+	top: 0;
 	width: 60%;
 	margin-left: -30%;
 	
 	text-align: center;
-	letter-spacing: 4px;
+	letter-spacing: 3px;
 }
 
 #hdr_nav dl dt{height: 60px; line-height: 60px; }
 #hdr_nav dl dd {display: inline;}
 #hdr_nav a {
 	display: inline-block;
-    height: 60px; 
-    line-height: 60px;
-    padding: 0 0.5em;
-    margin: 0 0.5em;
+	height: 60px; 
+	line-height: 60px;
+	padding: 0 0.5em;
+	margin: 0 0.5em;
 }
 
 .hdr_search_box {
@@ -167,26 +167,29 @@ header {overflow: hidden;}
 	color: #666;
 }
 
-.projects_list {}
-
-.project {
-	float: left;
-	margin: 20px;
-	width: 240px;
-	height: 100px;
+.projects_list {
+	text-align: center;
 }
 
+.project {
+	display: inline-block;
+	margin: 20px;
+	width: 320px;
+	height: 100px;
+}
 .project dt{
 	background-color: #f66;
 }
 .project dt a {
-	display: block;
+	display: table-cell;
+	width: 320px;
 	color: #fff;
 	font-size: 24px;
 	font-weight: bold;
 	height: 80px;
-	line-height: 80px;
 	text-align: center;
+	vertical-align: middle;
+	overflow: hidden;
 }
 .project dt a:hover {
 	text-decoration: underline;

@@ -60,4 +60,9 @@
          <lastmod>2022-12-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://jiangfeng.me/notes/virtualization/virtio/virtio-gpu-hardware-video-acceleration/</loc>
+         <lastmod>2022-12-14</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>

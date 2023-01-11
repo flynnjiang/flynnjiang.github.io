@@ -12,20 +12,20 @@
         <meta name="author" content="Feng Jiang">
       
       
-        <link rel="canonical" href="https://jiangfeng.me/notes/others/issues/virt-manager-egl-headless/">
+        <link rel="canonical" href="https://jiangfeng.me/notes/others/issues/qemu-egl-headless-with-nvidia-graphics/">
       
       
-        <link rel="prev" href="../qemu-egl-headless-with-nvidia-graphics/">
+        <link rel="prev" href="../fix-dpkg-errors/">
       
       
-        <link rel="next" href="../virt-manager-unable-to-connect-to-libvirt/">
+        <link rel="next" href="../virt-manager-egl-headless/">
       
       <link rel="icon" href="../../../../assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.3">
     
     
       
-        <title>virt-manager egl-headless显示异常 - Feng Jiang's Homepage</title>
+        <title>QEMU egl-headless显示器与NVIDIA显卡的适配问题 - Feng Jiang's Homepage</title>
       
     
     
@@ -75,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#virt-manager-egl-headless" class="md-skip">
+        <a href="#qemu-egl-headlessnvidia" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              virt-manager egl-headless显示异常
+              QEMU egl-headless显示器与NVIDIA显卡的适配问题
             
           </span>
         </div>
@@ -547,20 +547,6 @@
               
   
   
-  
-    <li class="md-nav__item">
-      <a href="../qemu-egl-headless-with-nvidia-graphics/" class="md-nav__link">
-        QEMU egl-headless显示器与NVIDIA显卡的适配问题
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
     
   
   
@@ -573,12 +559,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          virt-manager egl-headless显示异常
+          QEMU egl-headless显示器与NVIDIA显卡的适配问题
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        virt-manager egl-headless显示异常
+        QEMU egl-headless显示器与NVIDIA显卡的适配问题
       </a>
       
         
@@ -597,23 +583,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    问题描述
+  <a href="#1" class="md-nav__link">
+    问题1
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
+    问题2
+  </a>
+  
+    <nav class="md-nav" aria-label="问题2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
     解决办法
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
     原因分析
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -621,6 +620,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virt-manager-egl-headless/" class="md-nav__link">
+        virt-manager egl-headless显示异常
+      </a>
     </li>
   
 
@@ -777,23 +790,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    问题描述
+  <a href="#1" class="md-nav__link">
+    问题1
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#2" class="md-nav__link">
+    问题2
+  </a>
+  
+    <nav class="md-nav" aria-label="问题2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
     解决办法
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
     原因分析
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -813,32 +839,224 @@
 
 
 
-<h1 id="virt-manager-egl-headless">virt-manager egl-headless显示异常</h1>
-<h2 id="_1">问题描述</h2>
-<p>虚拟机使用SPICE + EGL headless显示器，启动后virt-manager提示：</p>
-<blockquote>
-<p>Cannot display graphical console type 'egl-headless'</p>
-</blockquote>
-<h2 id="_2">解决办法</h2>
-<p>编辑虚拟机的XML描述文件，将SPICE显示器移到EGL headless显示器前面：</p>
-<pre><code class="language-xml">    &lt;graphics type=&quot;spice&quot; autoport=&quot;yes&quot;&gt;
-      &lt;listen type=&quot;address&quot;/&gt;
-    &lt;/graphics&gt;
-    &lt;graphics type=&quot;egl-headless&quot;&gt;
-      &lt;gl rendernode=&quot;/dev/dri/renderD128&quot;/&gt;
-    &lt;/graphics&gt;
+<h1 id="qemu-egl-headlessnvidia">QEMU egl-headless显示器与NVIDIA显卡的适配问题</h1>
+<p>主要碰到了两个问题：</p>
+<ol>
+<li>虚拟机启动后，在物理机使用<code>nvidia-smi</code>查看，发现QEMU并未调用NVIDIA驱动；</li>
+<li>使用virt-manager启动虚拟机，初始化egl-headless显示器时崩溃。</li>
+</ol>
+<h2 id="1">问题1</h2>
+<p>目前，QEMU egl-headless显示器使用的是<code>EGL_mesa_platform_gbm</code>（也即
+<code>GL_KHR_platform_gbm</code>）,而NVIDIA驱动从495.29.05才支持该platform，所以首先
+得保证驱动版本符合要求。相关信息参见：</p>
+<ul>
+<li><a href="https://www.gamingonlinux.com/2021/10/nvidia-beta-4952905-rolls-out-with-gbm-for-expanded-wayland-support/">NVIDIA Beta 495.29.05 rolls out with GBM for expanded Wayland support</a></li>
+<li><a href="https://www.nvidia.com/download/driverResults.aspx/181159/en-us/">NVIDIA Linux x64 (AMD64/EM64T) Display Driver</a></li>
+</ul>
+<p>驱动安装完成后，可以先在物理机上使用<code>eglinfo</code>确认一下“GBM platform”下的
+驱动名称是否为NVIDIA，如果是的话应该是可以避免该问题的。</p>
+<pre><code>$ eglinfo
+EGL client extensions string:
+    EGL_EXT_platform_base EGL_EXT_device_base EGL_EXT_device_enumeration
+    EGL_EXT_device_query EGL_KHR_client_get_all_proc_addresses
+    EGL_EXT_client_extensions EGL_KHR_debug EGL_KHR_platform_x11
+    EGL_EXT_platform_x11 EGL_EXT_platform_device
+    EGL_MESA_platform_surfaceless EGL_EXT_explicit_device
+    EGL_KHR_platform_wayland EGL_EXT_platform_wayland
+    EGL_KHR_platform_gbm EGL_MESA_platform_gbm EGL_MESA_platform_xcb
+
+GBM platform:
+EGL API version: 1.5
+EGL vendor string: NVIDIA
+EGL version string: 1.5
+EGL client APIs: OpenGL_ES OpenGL
+EGL extensions string:
+    EGL_EXT_buffer_age EGL_EXT_client_sync
+...
 </code></pre>
-<h2 id="_3">原因分析</h2>
-<p>猜测virt-manager应该是将第一个<code>graphics</code>参数作为默认显示器，然后导致了上述
-错误。个人觉得virt-manager可以处理的稍微灵活一点，对显示器的类型进行一下判
-断，然后再决定使用哪个显示器。</p>
+<h2 id="2">问题2</h2>
+<h3 id="_1">解决办法</h3>
+<p>修改<code>/etc/libvirt/qemu.conf</code>文件，反注释掉<code>cgroup_device_acl</code>配置项，并将
+NVIDIA设备全部加进去，然后重启系统。</p>
+<pre><code># This is the basic set of devices allowed / required by
+# all virtual machines.
+#
+# As well as this, any configured block backed disks,
+# all sound device, and all PTY devices are allowed.
+#
+# This will only need setting if newer QEMU suddenly
+# wants some device we don't already know about.
+#
+cgroup_device_acl = [
+    &quot;/dev/null&quot;, &quot;/dev/full&quot;, &quot;/dev/zero&quot;,
+    &quot;/dev/random&quot;, &quot;/dev/urandom&quot;,
+    &quot;/dev/ptmx&quot;, &quot;/dev/kvm&quot;,
+    &quot;/dev/nvidia0&quot;,  &quot;/dev/nvidiactl&quot;,  &quot;/dev/nvidia-modeset&quot;,  &quot;/dev/nvidia-uvm&quot;,  &quot;/dev/nvidia-uvm-tools&quot;
+]
+</code></pre>
+<h3 id="_2">原因分析</h3>
+<p>经过一系列尝试，发现通过终端手动起QEMU是正常的，但通过virsh/virt-manager启动
+就会导致崩溃。于是用strace工具对QEMU进行分析，发现进程是被SIGSYS信号终止的：</p>
+<pre><code class="language-strace">9205  openat(AT_FDCWD, &quot;/proc/driver/nvidia/params&quot;, O_RDONLY) = 33
+9205  newfstatat(33, &quot;&quot;, {st_mode=S_IFREG|0444, st_size=0, ...}, AT_EMPTY_PATH) = 0
+9205  read(33, &quot;ResmanDebugLevel: 4294967295\nRmL&quot;..., 1024) = 878
+9205  close(33)                         = 0
+9205  stat(&quot;/dev/nvidiactl&quot;, 0x7ffd33310e90) = -1 ENOENT (No such file or directory)
+9205  mknodat(AT_FDCWD, &quot;/dev/nvidiactl&quot;, S_IFCHR|0666, makedev(0xc3, 0xff)) = -1 EACCES (Permission denied)
+9205  stat(&quot;/usr/bin/nvidia-modprobe&quot;, {st_mode=S_IFREG|S_ISUID|0755, st_size=39232, ...}) = 0
+9205  geteuid()                         = 107
+9205  clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7f52c2b05150) = 56
+9205  +++ killed by SIGSYS (core dumped) +++
+</code></pre>
+<p>与正常日志对比：</p>
+<pre><code class="language-strace">openat(AT_FDCWD, &quot;/proc/driver/nvidia/params&quot;, O_RDONLY) = 4
+newfstatat(4, &quot;&quot;, {st_mode=S_IFREG|0444, st_size=0, ...}, AT_EMPTY_PATH) = 0
+read(4, &quot;ResmanDebugLevel: 4294967295\nRmL&quot;..., 1024) = 878
+close(4)                                = 0
+stat(&quot;/dev/nvidiactl&quot;, {st_mode=S_IFCHR|0666, st_rdev=makedev(0xc3, 0xff), ...}) = 0
+openat(AT_FDCWD, &quot;/dev/nvidiactl&quot;, O_RDWR) = 4
+fcntl(4, F_SETFD, FD_CLOEXEC)           = 0
+ioctl(4, _IOC(_IOC_READ|_IOC_WRITE, 0x46, 0xd2, 0x48), 0x7ffc67a5c750) = 0
+openat(AT_FDCWD, &quot;/sys/devices/system/memory/block_size_bytes&quot;, O_RDONLY) = 5
+read(5, &quot;8000000\n&quot;, 99)                = 8
+close(5)                                = 0
+</code></pre>
+<p>可见差异主要在<code>/dev/nvidiactl</code>的访问上，问题日志中报告了<code>ENOENT</code>错误，但显然
+物理机上是存在这个设备节点的：</p>
+<pre><code class="language-sh"># ls -l /dev/nvidia*
+crw-rw-rw- 1 root root 195,   0 Jan  4 11:22 /dev/nvidia0
+crw-rw-rw- 1 root root 195, 255 Jan  4 11:22 /dev/nvidiactl
+crw-rw-rw- 1 root root 195, 254 Jan  4 11:22 /dev/nvidia-modeset
+</code></pre>
+<p>进入QEMU进程的<code>/proc/&lt;pid&gt;/root</code>目录查看，确实没有上述设备，难道libvirt还为
+QEMU设置了namespace？</p>
+<pre><code class="language-c">/* libvirt/src/qemu/qemu_namespace.c */
+
+static int
+qemuDomainSetupGraphics(virDomainGraphicsDef *gfx,
+                        GSList **paths)
+{
+    const char *rendernode = virDomainGraphicsGetRenderNode(gfx);
+
+    if (!rendernode)
+        return 0;
+
+    *paths = g_slist_prepend(*paths, g_strdup(rendernode));
+    return 0;
+}
+
+
+static int
+qemuDomainSetupAllGraphics(virDomainObj *vm,
+                           GSList **paths)
+{
+    size_t i;
+
+    VIR_DEBUG(&quot;Setting up graphics&quot;);
+    for (i = 0; i &lt; vm-&gt;def-&gt;ngraphics; i++) {
+        if (qemuDomainSetupGraphics(vm-&gt;def-&gt;graphics[i],
+                                    paths) &lt; 0)
+            return -1;
+    }
+
+    VIR_DEBUG(&quot;Setup all graphics&quot;);
+    return 0;
+}
+
+
+bool
+qemuDomainNamespaceEnabled(virDomainObj *vm,
+                           qemuDomainNamespace ns)
+{
+    qemuDomainObjPrivate *priv = vm-&gt;privateData;
+
+    return priv-&gt;namespaces &amp;&amp;
+        virBitmapIsBitSet(priv-&gt;namespaces, ns);
+}
+
+
+int
+qemuDomainBuildNamespace(virQEMUDriverConfig *cfg,
+                         virDomainObj *vm)
+{
+    g_autoptr(virGSListString) paths = NULL;
+
+    if (!qemuDomainNamespaceEnabled(vm, QEMU_DOMAIN_NS_MOUNT)) {
+        VIR_DEBUG(&quot;namespaces disabled for domain %s&quot;, vm-&gt;def-&gt;name);
+        return 0;
+    }
+
+    if (qemuDomainPopulateDevices(cfg, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupAllDisks(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupAllHostdevs(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupAllMemories(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupAllChardevs(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupAllTPMs(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupAllGraphics(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupAllInputs(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupAllRNGs(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupLoader(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuDomainSetupLaunchSecurity(vm, &amp;paths) &lt; 0)
+        return -1;
+
+    if (qemuNamespaceMknodPaths(vm, paths, NULL) &lt; 0)
+        return -1;
+
+    return 0;
+}
+
+</code></pre>
+<p>可见确实是会设置namepsace。</p>
+<pre><code class="language-c">/* libvirt/src/qemu/qemu_conf.c */
+
+virQEMUDriverConfig *virQEMUDriverConfigNew(bool privileged,
+                                              const char *root)
+{
+    ...
+
+    if (privileged &amp;&amp;
+        qemuDomainNamespaceAvailable(QEMU_DOMAIN_NS_MOUNT) &amp;&amp;
+        virBitmapSetBit(cfg-&gt;namespaces, QEMU_DOMAIN_NS_MOUNT) &lt; 0)
+        return NULL;
+
+    ...
+}
+
+</code></pre>
+<p>由上可知，当为特权模式且系统支持namespace时，就会设置<code>QEMU_DOMAIN_NS_MOUNT</code>
+标志位，从而导致QEMU被隔离，只允许访问DRI renderer node节点。</p>
+<p>根据<a href="https://libvirt.org/drvqemu.html#connections-to-qemu-driver">官方文档</a>
+的介绍，凡是是以<code>qemu:///system</code>的URI连接QEMU driver，都为特权模式。所以
+这个特权模式是不好调整的，那有没有其它的配置接口呢？</p>
+<p>当然是有的，那就是上一节提到的<code>/etc/libvirt/qemu.conf</code>，具体配置方法该文件
+注释写的比较清楚，不再赘述。</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-01-04T09:26:43+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-01-04</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-01-11T06:55:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-01-11</span>
       
     
   </small>

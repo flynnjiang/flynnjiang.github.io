@@ -1,0 +1,37 @@
+name: Auto Deploy
+
+on:
+  push:
+    branches:
+      - master 
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    name: Build and deploy website
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python runtime
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install Python dependencies
+        run: |
+          pip install \
+            mkdocs-material \
+            mkdocs-git-revision-date-localized-plugin
+
+      - name: Deploy website
+        run: |
+          mkdocs gh-deploy --force
+          mkdocs --version
+

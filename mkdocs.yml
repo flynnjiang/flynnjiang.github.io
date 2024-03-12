@@ -1,0 +1,37 @@
+site_name: Feng Jiang's Homepage
+site_url: https://jiangfeng.org/
+site_author: Feng Jiang
+site_description: >-
+  I use this site to share and bookmark various things, mostly my work
+  with computers.
+  
+copyright: Copyright &copy; 2022-2024 Feng Jiang
+
+theme:
+  name: material
+  favicon: assets/favicon.svg
+  logo: assets/logo.svg
+  features:
+    - navigation.tabs
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: simple/facebook
+      link: https://www.facebook.com/flynnjiang
+    - icon: simple/twitter
+      link: https://twitter.com/flynnjiang
+    - icon: simple/freedesktopdotorg
+      link: https://gitlab.freedesktop.org/flynnjiang
+    - icon: simple/github
+      link: https://github.com/flynnjiang
+    - icon: simple/gitee
+      link: https://gitee.com/flynnjiang
